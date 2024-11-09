@@ -1,14 +1,11 @@
 function make_k_list(k, d) {
 
     // WRITE YOUR SOLUTION HERE.
-    function helper(pos) {
-        return pos >= d
-                ? 0
-                : map(x => helper(pos + 1), enum_list(1, k));
-    }
-    return d === 0 ? 0 : helper(0);
+    return d < 0
+    		? 0
+            : map(x => make_k_list(k, d - 1), enum_list(1, k));
 }
-display_list(make_k_list(4,1));
+// display_list(make_k_list(4,1));
 
 function sum_k_list(klist) {
 

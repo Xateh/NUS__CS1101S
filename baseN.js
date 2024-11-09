@@ -54,7 +54,7 @@ function value_to_baseN(N, x) {
                 ? acc
                 : helper(
                     math_floor(v / N),
-                    pair(DIGIT_SYMBOLS[v % N],acc));
+                    pair(DIGIT_SYMBOLS[v % N], acc));
     }
     
     return x === 0

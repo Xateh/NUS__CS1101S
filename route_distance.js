@@ -1,15 +1,13 @@
 function route_distance(mat, route) {
 
     // WRITE YOUR SOLUTION HERE.
-    function helper(route, acc) {
-        return is_null(tail(route))
-                ? acc
-                : helper(
-                    tail(route), 
-                    mat[head(route)][head(tail(route))] + acc
-                );
-    }
-    return helper(route, 0);
+    return head(
+            accumulate(
+                (x, ys) => is_null(tail(ys))
+                            ? pair(0, x)
+                            : pair(mat[x][tail(ys)] + head(ys), x),
+                pair(0, null),
+                route));
 }
 
 // const mat = [[0, 1, 2, 3],
@@ -49,12 +47,12 @@ function shortest_paper_route(n, mat, start) {
             );
 }
 
-const mat = [[0, 1, 2, 3],
-             [2, 0, 5, 6],
-             [3, 3, 0, 4],
-             [4, 4, 5, 0]];
-const n = array_length(mat);
-shortest_paper_route(n, mat, 1);
+// const mat = [[0, 1, 2, 3],
+//              [2, 0, 5, 6],
+//              [3, 3, 0, 4],
+//              [4, 4, 5, 0]];
+// const n = array_length(mat);
+// shortest_paper_route(n, mat, 1);
 
 // A residential neighborhood has n houses, numbered from 0 to n - 1, and n is at least 2.
 

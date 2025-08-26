@@ -2,11 +2,15 @@
 
 ## archive
 
-My Source codes that utilises concepts taught in CS1101S.
+My Source codes that utilises concepts taught in CS1101S AY24/25.
 
 ## studio slides
 
-Slides used for my studios in AY 25/26
+Slides used for my studios in AY 25/26.
+
+## studio codes
+
+Source codes used for my in-class studios in AY25/26.
 
 ## Creds
 

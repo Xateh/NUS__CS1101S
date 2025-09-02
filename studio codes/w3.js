@@ -1,89 +1,42 @@
 /**
- * Qn 1:
- * Begin by writing a function 'moony_1'
- * that takes an argument 'bottom_right'
- * and produces the given rune
+ * Consider the following Source program:
  */
-import {beside, stack, circle, blank, ribbon, square, show, beside_frac, stack_frac} from "rune";
 
-function moony_1(bottom_right) {
-    const top = beside(circle, blank);
-    const bottom = beside(square, bottom_right);
-    return stack(top, bottom);
+function f1(rune_1, n, rune_2) {
+    return n === 0
+            ? rune_2
+            : f1(rune_1, n - 1, beside(rune_1,stack(blank, rune_2)));
 }
-show(moony_1(ribbon));
+show(f1(square, 3, heart));
+
+/** Use the substitution model on runes demonstrated during Lecture L2A in order to manually
+ * evaluate the expression f1(square, 3, heart). The evaluation proceeds as demonstrated
+ * in L2A. For the primitive rune square, you should draw a solid box ∎ and for the primitive
+ * rune blank, you should draw an empty box .
+ * Of course as the computation proceeds according to the substitution model, the pictures
+ * within your expressions will become more complex. Try to get the proportions right and
+ * draw the pictures as large as necessary.
+ */
+
 
 /**
- * Qn 2:
- * Use recursion in a function 'moony_2'
- * to insert n - 1 other circles in the approximately
- * correct location.
+ * Consider the following Source program:
  */
- 
- function moony_2(n) {
-     return n === 1
-            ? circle
-            : moony_1(moony_2(n-1));
- }
-show(moony_2(4));
 
-/**
- * Qn 3:
- * Use the available primititve combinations on runes
- * to even out the rows and columns.
- */
- 
-function moony(n) {
-    //return ...;
-    return n < 1 
-    ? circle 
-    : beside_frac(
-        1/n,
-        stack_frac(1/n, circle, square),
-        stack_frac(1/n, blank, moony(n - 1))
-    );
+function f2(rune, n) {
+    return n === 0
+            ? rune
+            : stack(beside(blank, f2(rune, n - 1)),
+                    square);
 }
-show(moony(3));
+show(f2(heart, 3));
 
 /**
- * Qn 4a:
- * Do your solutions give rise to a 
- * recursive or iterative processes?
- * 
- * Ans:
- * Recursive, there were deferred operations.
- */
- 
-/**
- * Qn 4b:
- * Characterize the resource consumption of 'moony'
- * using orders of growth notation.
- * Be clear about what you consider the "size"
- * of the given problem.
- * 
- * Ans:
- * Time Complexity
- * O(2^n), O(n^2), O(n) as there are at most n calls of
- * moony when input is n
- * Omega(1), Omega(n) as there are at least n calls of
- * moony when input is n
- * -> Theta(n) since Big-O and Big-Omega
- * has the same growth function of n
- * 
- * Space Complexity
- * O(n) as there are at most kn deferred operations
- * Omega(n) as there are at least kn deferred operations
- * -> Theta(n) since Big-O and Big-Omega has
- * the same growth function
- */
- 
-/**
- * Qn 4c:
- * What assumptions are you making on
- * the resource consumption of primitive runes
- * and of primitive operations on runes?
- * 
- * Ans:
- * 1) operations are all O(1) time ie constant time
- * 2) runes all take O(1) space ie constant space
+ * Use the substitution model on runes demonstrated during Lecture L2A in order to manually
+ * evaluate the expression f2(heart, 3). The evaluation proceeds as demonstrated in L2A.
+ * For the primitive rune square, you should draw a solid box ∎ and for the primitive rune
+ * blank, you should draw and empty box .
+ * Of course as the computation proceeds according to the substitution model, the pictures
+ * within your expressions will become more complex. Try to get the proportions right and
+ * draw the pictures as large as necessary.
  */
